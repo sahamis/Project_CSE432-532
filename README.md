@@ -319,4 +319,4 @@ You may use AI tools for guidance, debugging, and learning concepts. However:
 1. Livingstone SR, Russo FA (2018). *The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS).* PLoS ONE 13(5): e0196391. [https://doi.org/10.1371/journal.pone.0196391](https://doi.org/10.1371/journal.pone.0196391)
 2. RAVDESS Dataset on Zenodo: [https://zenodo.org/records/1188976](https://zenodo.org/records/1188976)
 3. McFee B, et al. *librosa: Audio and music signal analysis in Python.* [https://librosa.org](https://librosa.org)
-4. Pedregosa F, et al. *Scikit-learn: Machine Learning in Python.* JMLR 12, 2011.
+4. You may take a look into sample Papers
