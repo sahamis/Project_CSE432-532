@@ -128,3 +128,44 @@ uploaded = files.upload()  # opens a file picker
 ```
 
 However, for the audio dataset (~400 MB), Google Drive mounting is strongly recommended over direct upload.
+
+## Option 4: Windows Users: Using WSL
+
+Windows supports **Windows Subsystem for Linux (WSL)**. It allows you to run a real Linux environment inside Windows, including a full Linux terminal. In this course, I do not directly support Windows but you can still use directly linux/mac commands and syntax on windows using WSL (including seting up a virtual environment for your python project).
+
+One working setup is:
+
+1. Open **PowerShell as Administrator** and run:
+
+   ```bash
+   wsl --install -d Ubuntu
+   ```
+
+2. Approve any prompts and restart your computer when asked.
+
+3. After restarting, open **Windows Terminal**. From the dropdown menu next to the tab bar, select **Ubuntu**.
+
+4. The first time it launches, you will be asked to create a username and password. Store these securely.
+
+You now have a Linux environment inside Windows.
+
+From this point on, follow the macOS or Linux setup instructions in this guide. Use the Ubuntu terminal to:
+
+- Navigate to your project folder  
+- Create your virtual environment:
+  
+  ```bash
+  python3 -m venv .venv
+  ```
+
+- Activate it and install packages as usual  
+
+Important: Always navigate to your project directory first, for example:
+
+```bash
+cd path/to/your/project
+```
+
+Then create and use your `.venv` inside that directory.
+
+If you use VS Code, make sure you open the project folder from within WSL so the correct Python interpreter and virtual environment are detected. However, if you do not want to do that, you can still manage .venv with WSL and work as usual with windwos VSCode.
