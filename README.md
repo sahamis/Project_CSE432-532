@@ -12,7 +12,7 @@ A unique component of this project is that you will develop your own lightweight
 
 > **Important:** We are working exclusively with the **audio** portion of the RAVDESS dataset. You will **not** use any video or facial expression data. All your work should focus on extracting information from the audio signal only.
 
-*NOTE: Some part of this readme may updated during the course. It's good idea to `git pull` on your local repo to get latest information.*
+_NOTE: Some part of this readme may updated during the course. It's good idea to `git pull` on your local repo to get latest information._
 
 ### Learning Objectives
 
@@ -34,18 +34,18 @@ By completing this project you will be able to:
 **The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS)**
 
 - **Source:** [https://zenodo.org/records/1188976](https://zenodo.org/records/1188976)
-- **Citation (required in your report):** Livingstone SR, Russo FA (2018). *The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS): A dynamic, multimodal set of facial and vocal expressions in North American English.* PLoS ONE 13(5): e0196391. [https://doi.org/10.1371/journal.pone.0196391](https://doi.org/10.1371/journal.pone.0196391)
+- **Citation (required in your report):** Livingstone SR, Russo FA (2018). _The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS): A dynamic, multimodal set of facial and vocal expressions in North American English._ PLoS ONE 13(5): e0196391. [https://doi.org/10.1371/journal.pone.0196391](https://doi.org/10.1371/journal.pone.0196391)
 
 ### What to Download
 
 Download **only** the two **audio-only** zip files from the Zenodo page:
 
-| File | Size | Contents |
-|------|------|----------|
+| File                            | Size    | Contents                                      |
+| ------------------------------- | ------- | --------------------------------------------- |
 | `Audio_Speech_Actors_01-24.zip` | ~215 MB | 1,440 speech files (60 per actor × 24 actors) |
-| `Audio_Song_Actors_01-24.zip` | ~198 MB | 1,012 song files (44 per actor × 23 actors*) |
+| `Audio_Song_Actors_01-24.zip`   | ~198 MB | 1,012 song files (44 per actor × 23 actors\*) |
 
-*\*Actor 18 has no song files.*
+_\*Actor 18 has no song files._
 
 All audio files are **16-bit, 48 kHz WAV** format. Do **not** download the video files.
 
@@ -53,15 +53,15 @@ All audio files are **16-bit, 48 kHz WAV** format. Do **not** download the video
 
 Each filename is a 7-part numerical identifier. For example: `03-01-05-01-02-01-12.wav`
 
-| Position | Meaning | Values |
-|----------|---------|--------|
-| 1 | Modality | 01 = full-AV, 02 = video-only, **03 = audio-only** |
-| 2 | Vocal channel | **01 = speech**, **02 = song** |
-| 3 | **Emotion** | 01 = neutral, 02 = calm, 03 = happy, 04 = sad, 05 = angry, 06 = fearful, 07 = disgust, 08 = surprised |
-| 4 | Intensity | 01 = normal, 02 = strong (no strong for neutral) |
-| 5 | Statement | 01 = "Kids are talking by the door", 02 = "Dogs are sitting by the door" |
-| 6 | Repetition | 01 = 1st, 02 = 2nd |
-| 7 | Actor | 01–24 (odd = male, even = female) |
+| Position | Meaning       | Values                                                                                                |
+| -------- | ------------- | ----------------------------------------------------------------------------------------------------- |
+| 1        | Modality      | 01 = full-AV, 02 = video-only, **03 = audio-only**                                                    |
+| 2        | Vocal channel | **01 = speech**, **02 = song**                                                                        |
+| 3        | **Emotion**   | 01 = neutral, 02 = calm, 03 = happy, 04 = sad, 05 = angry, 06 = fearful, 07 = disgust, 08 = surprised |
+| 4        | Intensity     | 01 = normal, 02 = strong (no strong for neutral)                                                      |
+| 5        | Statement     | 01 = "Kids are talking by the door", 02 = "Dogs are sitting by the door"                              |
+| 6        | Repetition    | 01 = 1st, 02 = 2nd                                                                                    |
+| 7        | Actor         | 01–24 (odd = male, even = female)                                                                     |
 
 Your classification target is the **Emotion** (position 3). You must write code to parse these filenames and build a metadata table.
 
@@ -73,7 +73,7 @@ You will develop **MiniLearn** — your own mini scikit-learn–style Python pac
 
 ### Requirements
 
-1. **Importable Python package.** You should be able to write statements like `from minilearn.classifiers import LogisticRegression` in your SER notebook.
+1. **Importable Python package (miniLearn):** You should be able to write statements like `from minilearn.classifiers import LogisticRegression` in your SER notebook.
    1. **[optional]** Follow the scikit-learn API pattern. Each model must have `.fit(X, y)`, `.predict(X)`, and `.score(X, y)` methods.
    2. **Required implementations** (from scratch, using only NumPy/SciPy for numerical operations):
       - Preprocessing: feature standardization, train-test split
@@ -89,37 +89,36 @@ You will develop **MiniLearn** — your own mini scikit-learn–style Python pac
       - ANN (your choice, a 1-layer perceptron based ANN for classification is the minimum requirement)
    3. **Optional / Bonus:**
       - You can implement other methods as well to improve your comparative analysis
+2. **Use MiniLearn to analyze SER classification results.** For each supervised model you implement, you will apply it to the SER data and compute all required metrics (accuracy, precision, recall, F1, confusion matrix, ROC/AUC). You will write a detailed analysis of the results — which emotions are classified well vs. poorly, how does performance compare with scikit-learn, what do the confusion matrices reveal about common misclassifications, etc. The weekly roadmap in section 8 provides more details on which algorithms to implement and analyze each week.
 
-
-You must compare your MiniLearn implementations against the equivalent scikit-learn classes and **discuss** where they agree, where they diverge, and why.
-
-> **Code Ownership:** There is an assessment for your project. You must be able to explain every function in your MiniLearn code. I reserve the right to ask you to walk through your code, explain design decisions, or modify it live during a scheduled walk-through. **Inability to explain your own code may result in a score of 0 for this section.**
+> **Code Ownership:** There is an assessment for your project. You must be able to explain every function in your MiniLearn code. I reserve the right to ask you to walk through your code, explain design decisions, or modify it live during a scheduled walk-through. You should also work on the project incrementally, with a clear Git history showing the development of your MiniLearn library over time. Submitting code you cannot explain will be treated as an academic integrity violation.
 
 ---
 
 ## 4. Feature Extraction from Audio
 
-Since this is a machine learning course (not a speech processing course), we provide guidance on audio feature extraction. Your job is to understand *what* these features capture and *why* they matter for emotion recognition, then to implement the extraction pipeline.
+Since this is a machine learning course (not a speech processing course), we provide guidance on audio feature extraction. Your job is to understand _what_ these features capture and _why_ they matter for emotion recognition, then to implement the extraction pipeline.
 
 ### 4.1 Hand-Crafted Features (Required)
 
 You may use the `librosa` Python library. For each audio file, extract frame-level features and then compute **summary statistics** (mean, standard deviation, etc.) to produce a fixed-length feature vector.
 
-| Feature | Description | Why It Matters for SER |
-|---------|-------------|----------------------|
-| **MFCCs** (Mel-Frequency Cepstral Coefficients) | Compact representation of the spectral envelope (typically 13 coefficients) | Gold standard in speech/audio ML; captures vocal tract characteristics |
-| **MFCC Deltas** (1st and 2nd order) | Rate of change of MFCCs over time | Captures dynamic aspects of speech — how the sound *changes* |
-| **Chroma Features** | 12-dimensional pitch class profile | Captures tonal content; useful for distinguishing emotions in song |
-| **Mel Spectrogram** | Time-frequency representation on the Mel scale | Rich spectral information; good input for CNN-based approaches |
-| **Zero Crossing Rate (ZCR)** | Rate at which signal changes sign | Indicates noisiness; excited emotions (angry, happy) tend to have higher ZCR |
-| **RMS Energy** | Root mean square energy per frame | Loudness — directly related to emotional intensity |
-| **Spectral Centroid** | "Center of mass" of the spectrum | Brightness of sound; higher for excited emotions |
-| **Spectral Bandwidth** | Width of the spectral band | Spread of frequencies; varies with emotion |
-| **Spectral Rolloff** | Frequency below which 85% of energy lies | Distinguishes harmonic vs. noisy signals |
+| Feature                                         | Description                                                                 | Why It Matters for SER                                                       |
+| ----------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| **MFCCs** (Mel-Frequency Cepstral Coefficients) | Compact representation of the spectral envelope (typically 13 coefficients) | Gold standard in speech/audio ML; captures vocal tract characteristics       |
+| **MFCC Deltas** (1st and 2nd order)             | Rate of change of MFCCs over time                                           | Captures dynamic aspects of speech — how the sound _changes_                 |
+| **Chroma Features**                             | 12-dimensional pitch class profile                                          | Captures tonal content; useful for distinguishing emotions in song           |
+| **Mel Spectrogram**                             | Time-frequency representation on the Mel scale                              | Rich spectral information; good input for CNN-based approaches               |
+| **Zero Crossing Rate (ZCR)**                    | Rate at which signal changes sign                                           | Indicates noisiness; excited emotions (angry, happy) tend to have higher ZCR |
+| **RMS Energy**                                  | Root mean square energy per frame                                           | Loudness — directly related to emotional intensity                           |
+| **Spectral Centroid**                           | "Center of mass" of the spectrum                                            | Brightness of sound; higher for excited emotions                             |
+| **Spectral Bandwidth**                          | Width of the spectral band                                                  | Spread of frequencies; varies with emotion                                   |
+| **Spectral Rolloff**                            | Frequency below which 85% of energy lies                                    | Distinguishes harmonic vs. noisy signals                                     |
 
 **How to use `librosa`:** Each feature is computed per-frame (e.g., `librosa.feature.mfcc()` returns a matrix of shape `[n_mfcc, n_frames]`). Since each audio file has different length, you should compute **summary statistics** over the frames (mean, std, min, max, etc.) to get a single fixed-length vector per file.
 
 Example for one feature:
+
 ```python
 import librosa
 import numpy as np
@@ -150,31 +149,31 @@ Apply the following classifiers to your extracted features. For every model, rep
 
 ### 5.1 Classical Models (Required)
 
-| Model | Course Chapter | What to Explore |
-|-------|---------------|-----------------|
-| Logistic Regression | Ch. 7 | Use **both** your MiniLearn version and scikit-learn. Compare results. |
-| Gaussian Naive Bayes | Ch. 7 | Good fast baseline. |
-| k-Nearest Neighbors | Ch. 7 | Try different values of *k*. Why does standardization matter here? |
-| Support Vector Machine | Ch. 8 | Try linear, RBF, and polynomial kernels. Tune C and gamma. |
-| Decision Tree | Ch. 9 | Visualize the tree. Discuss overfitting and pruning. |
-| Random Forest | Ch. 10 | Compare with single Decision Tree. Why is it better? |
-| Bagging / Voting Classifier | Ch. 10 | Combine your best models. |
+| Model                       | Course Chapter | What to Explore                                                        |
+| --------------------------- | -------------- | ---------------------------------------------------------------------- |
+| Logistic Regression         | Ch. 7          | Use **both** your MiniLearn version and scikit-learn. Compare results. |
+| Gaussian Naive Bayes        | Ch. 7          | Good fast baseline.                                                    |
+| k-Nearest Neighbors         | Ch. 7          | Try different values of _k_. Why does standardization matter here?     |
+| Support Vector Machine      | Ch. 8          | Try linear, RBF, and polynomial kernels. Tune C and gamma.             |
+| Decision Tree               | Ch. 9          | Visualize the tree. Discuss overfitting and pruning.                   |
+| Random Forest               | Ch. 10         | Compare with single Decision Tree. Why is it better?                   |
+| Bagging / Voting Classifier | Ch. 10         | Combine your best models.                                              |
 
 ### 5.2 Boosting Models (Optional)
 
-| Model | What to Explore |
-|-------|-----------------|
-| AdaBoost | How does it focus on misclassified samples? |
-| Gradient Boosting | Compare with AdaBoost on the same features. |
-| XGBoost | Often a top performer on tabular data. Compare with Gradient Boosting. |
+| Model             | What to Explore                                                        |
+| ----------------- | ---------------------------------------------------------------------- |
+| AdaBoost          | How does it focus on misclassified samples?                            |
+| Gradient Boosting | Compare with AdaBoost on the same features.                            |
+| XGBoost           | Often a top performer on tabular data. Compare with Gradient Boosting. |
 
 ### 5.3 Neural Network Models (Required — At Least One)
 
-| Model | Input Type | Notes |
-|-------|-----------|-------|
-| Dense Neural Network (DNN) | Feature vector | A few Dense layers with ReLU + softmax output. Start here. |
-| 1D-CNN | Raw MFCC frames or Mel spectrogram | Captures local temporal patterns in audio. |
-| LSTM / GRU | MFCC frame sequences | Captures sequential dependencies in speech over time. |
+| Model                      | Input Type                         | Notes                                                      |
+| -------------------------- | ---------------------------------- | ---------------------------------------------------------- |
+| Dense Neural Network (DNN) | Feature vector                     | A few Dense layers with ReLU + softmax output. Start here. |
+| 1D-CNN                     | Raw MFCC frames or Mel spectrogram | Captures local temporal patterns in audio.                 |
+| LSTM / GRU                 | MFCC frame sequences               | Captures sequential dependencies in speech over time.      |
 
 You can use `tensorflow`/`keras` or `pytorch` as well (since you're using a pre-trained model it would be a simple adaptation).
 
@@ -233,18 +232,18 @@ Build a summary comparison table of all models (accuracy, macro-F1, AUC, best hy
 
 ## 8. Weekly Roadmap
 
-| Week | Topic | Project Tasks | Deliverable |
-|------|-------|---------------|-------------|
-| **4** | Data Wrangling & Feature Engineering | Download RAVDESS data, set up environment. Parse filenames and build metadata table. Explore class distributions and audio properties. | Data loading + EDA notebook |
-| **5** | Data Wrangling & Feature Engineering (cont.) | Extract audio features (MFCCs, ZCR, RMS, spectral features). Save to CSV. Correlation analysis, feature distributions by emotion, visualizations. Apply feature standardization. | Feature CSV + EDA notebook |
-| **6** | Regression | Finalize any remaining feature work. Apply a regression model (e.g., linear regression to predict emotional intensity from audio features). Evaluate with regression metrics (MSE, R²). Begin implementing Logistic Regression in MiniLearn. | Regression notebook + MiniLearn LR draft |
-| **7** | Classification | Apply Logistic Regression, Gaussian Naive Bayes, and kNN to SER. Compare MiniLearn vs scikit-learn. | Classification results notebook |
-| **8** | SVM | Apply SVM with linear, RBF, and polynomial kernels. Tune hyperparameters (C, gamma). Optionally try SVR. | SVM results notebook |
-| 9 | Decision Trees & Ensembles | Implement **only** CART from scratch in MiniLearn. Apply scikit-learn Decision Tree, Random Forest, and AdaBoost for empirical comparison. Visualize trees and discuss overfitting and generalization. | MiniLearn CART + ensemble analysis notebook |
-| **10** | Model Validation | Apply Stratified K-Fold cross-validation to all models. Hyperparameter tuning (GridSearch/RandomizedSearch). Build model comparison table. | Validation notebook |
-| **11** | Clustering | Apply K-Means (k = 8). Evaluate with ARI/NMI. Visualize clusters using PCA or t-SNE. Optional: hierarchical clustering, DBSCAN. | Clustering notebook |
-| **12** | Dimensionality Reduction | Apply PCA for feature extraction. Analyze explained variance. Re-run classifiers on reduced features. Optional: non-linear techniques. | Dimensionality reduction notebook |
-| **13–14** | ANN | Implement a simple ANN from scratch in MiniLearn. Apply one off-the-shelf DL model (e.g., Dense NN, 1D-CNN, or LSTM). Compare with classical models. Finalize report and clean repository. *Week 14 may be used for project evaluation/walkthrough.* | MiniLearn ANN + DL notebook + final report |
+| Week      | Topic                                        | Project Tasks                                                                                                                                                                                                                                        | Deliverable                                 |
+| --------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| **4**     | Data Wrangling & Feature Engineering         | Download RAVDESS data, set up environment. Parse filenames and build metadata table. Explore class distributions and audio properties.                                                                                                               | Data loading + EDA notebook                 |
+| **5**     | Data Wrangling & Feature Engineering (cont.) | Extract audio features (MFCCs, ZCR, RMS, spectral features). Save to CSV. Correlation analysis, feature distributions by emotion, visualizations. Apply feature standardization.                                                                     | Feature CSV + EDA notebook                  |
+| **6**     | Regression                                   | Finalize any remaining feature work. Apply a regression model (e.g., linear regression to predict emotional intensity from audio features). Evaluate with regression metrics (MSE, R²). Begin implementing Logistic Regression in MiniLearn.         | Regression notebook + MiniLearn LR draft    |
+| **7**     | Classification                               | Apply Logistic Regression, Gaussian Naive Bayes, and kNN to SER. Compare MiniLearn vs scikit-learn.                                                                                                                                                  | Classification results notebook             |
+| **8**     | SVM                                          | Apply SVM with linear, RBF, and polynomial kernels. Tune hyperparameters (C, gamma). Optionally try SVR.                                                                                                                                             | SVM results notebook                        |
+| 9         | Decision Trees & Ensembles                   | Implement **only** CART from scratch in MiniLearn. Apply scikit-learn Decision Tree, Random Forest, and AdaBoost for empirical comparison. Visualize trees and discuss overfitting and generalization.                                               | MiniLearn CART + ensemble analysis notebook |
+| **10**    | Model Validation                             | Apply Stratified K-Fold cross-validation to all models. Hyperparameter tuning (GridSearch/RandomizedSearch). Build model comparison table.                                                                                                           | Validation notebook                         |
+| **11**    | Clustering                                   | Apply K-Means (k = 8). Evaluate with ARI/NMI. Visualize clusters using PCA or t-SNE. Optional: hierarchical clustering, DBSCAN.                                                                                                                      | Clustering notebook                         |
+| **12**    | Dimensionality Reduction                     | Apply PCA for feature extraction. Analyze explained variance. Re-run classifiers on reduced features. Optional: non-linear techniques.                                                                                                               | Dimensionality reduction notebook           |
+| **13–14** | ANN                                          | Implement a simple ANN from scratch in MiniLearn. Apply one off-the-shelf DL model (e.g., Dense NN, 1D-CNN, or LSTM). Compare with classical models. Finalize report and clean repository. _Week 14 may be used for project evaluation/walkthrough._ | MiniLearn ANN + DL notebook + final report  |
 
 ---
 
@@ -252,8 +251,9 @@ Build a summary comparison table of all models (accuracy, macro-F1, AUC, best hy
 
 ### Required Python Packages
 
-You will need: `numpy`, `pandas`, `matplotlib`, `seaborn`, `scikit-learn`, `librosa`, `soundfile`, `xgboost`, 
-   - Later you use a deep learning framework (`tensorflow` or `pytorch`).
+You will need: `numpy`, `pandas`, `matplotlib`, `seaborn`, `scikit-learn`, `librosa`, `soundfile`, `xgboost`,
+
+- Later you use a deep learning framework (`tensorflow` or `pytorch`).
 
 ### Dataset Download
 
@@ -283,15 +283,15 @@ Your final submission should be a well-organized Jupyter notebook (or set of not
 
 ### Total: 100 points
 
-| Section | Points | Key Criteria |
-|---------|--------|-------------|
-| **A. Data Acquisition, Cleaning & Exploration** | 10 | Correct download, filename parsing, data audit, EDA visualizations, written discussion |
-| **B. Feature Extraction** | 10 | Multiple feature types extracted, analysis/visualization, proper standardization |
-| **C. MiniLearn Library** | 30 | Package structure, LR, KNN, NB, Decision Tree, metrics module — all from scratch |
-| **D. Supervised Classification** | 20 | All classical + boosting + at least one NN model applied; MiniLearn vs sklearn comparison |
-| **E. Model Evaluation & Validation** | 10 | All metrics reported, cross-validation, hyperparameter tuning |
-| **F. Unsupervised / Clustering** | 10 | K-Means + Hierarchical applied, PCA/t-SNE visualization, ARI/NMI, written analysis |
-| **G. Report Quality & Presentation** | 10 | Organization, writing quality, critical discussion, code cleanliness |
+| Section                                         | Points | Key Criteria                                                                              |
+| ----------------------------------------------- | ------ | ----------------------------------------------------------------------------------------- |
+| **A. Data Acquisition, Cleaning & Exploration** | 10     | Correct download, filename parsing, data audit, EDA visualizations, written discussion    |
+| **B. Feature Extraction**                       | 10     | Multiple feature types extracted, analysis/visualization, proper standardization          |
+| **C. MiniLearn Library**                        | 30     | Package structure, LR, KNN, NB, Decision Tree, metrics module — all from scratch          |
+| **D. Supervised Classification**                | 20     | All classical + boosting + at least one NN model applied; MiniLearn vs sklearn comparison |
+| **E. Model Evaluation & Validation**            | 10     | All metrics reported, cross-validation, hyperparameter tuning                             |
+| **F. Unsupervised / Clustering**                | 10     | K-Means + Hierarchical applied, PCA/t-SNE visualization, ARI/NMI, written analysis        |
+| **G. Report Quality & Presentation**            | 10     | Organization, writing quality, critical discussion, code cleanliness                      |
 
 ### Code Ownership (applies to all sections)
 
@@ -312,7 +312,7 @@ You may use AI tools for guidance, debugging, and learning concepts. However:
 
 ## References
 
-1. Livingstone SR, Russo FA (2018). *The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS).* PLoS ONE 13(5): e0196391. [https://doi.org/10.1371/journal.pone.0196391](https://doi.org/10.1371/journal.pone.0196391)
+1. Livingstone SR, Russo FA (2018). _The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS)._ PLoS ONE 13(5): e0196391. [https://doi.org/10.1371/journal.pone.0196391](https://doi.org/10.1371/journal.pone.0196391)
 2. RAVDESS Dataset on Zenodo: [https://zenodo.org/records/1188976](https://zenodo.org/records/1188976)
-3. McFee B, et al. *librosa: Audio and music signal analysis in Python.* [https://librosa.org](https://librosa.org)
+3. McFee B, et al. _librosa: Audio and music signal analysis in Python._ [https://librosa.org](https://librosa.org)
 4. You may take a look into sample Papers
