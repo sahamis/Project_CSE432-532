@@ -84,12 +84,12 @@ You will develop **MiniLearn** — your own mini scikit-learn–style Python pac
       - Decision Tree (CART algorithm)
       - Evaluation metrics: accuracy, precision, recall, F1 score, confusion matrix
       - Cross-validation utility (k-fold)
-      - Clustering (see section 6)
+      - Clustering (see Section 5)
       - PCA for dimensionality reduction
       - ANN (your choice, a 1-layer perceptron based ANN for classification is the minimum requirement)
    3. **Optional / Bonus:**
       - You can implement other methods as well to improve your comparative analysis
-2. **Use MiniLearn to analyze SER classification results.** For each supervised model you implement, you will apply it to the SER data and compute all required metrics (accuracy, precision, recall, F1, confusion matrix, ROC/AUC). You will write a detailed analysis of the results — which emotions are classified well vs. poorly, how does performance compare with scikit-learn, what do the confusion matrices reveal about common misclassifications, etc. The weekly roadmap in section 8 provides more details on which algorithms to implement and analyze each week.
+2. **Use MiniLearn to analyze SER classification results.** For each supervised model you implement, you will apply it to the SER data and compute all required metrics (accuracy, precision, recall, F1, confusion matrix, ROC/AUC). You will write a detailed analysis of the results — which emotions are classified well vs. poorly, how does performance compare with scikit-learn, what do the confusion matrices reveal about common misclassifications, etc. The weekly roadmap in Section 6 provides more details on which algorithms to implement and analyze each week.
 
 > **Code Ownership:** There is an assessment for your project. You must be able to explain every function in your MiniLearn code. I reserve the right to ask you to walk through your code, explain design decisions, or modify it live during a scheduled walk-through. You should also work on the project incrementally, with a clear Git history showing the development of your MiniLearn library over time. Submitting code you cannot explain will be treated as an academic integrity violation.
 
@@ -143,94 +143,41 @@ For more advanced experiments, you may extract embeddings from pre-trained audio
 
 ---
 
-## 5. Supervised Learning — Classification
+## 5. ML Methods & Evaluation
 
-Apply the following classifiers to your extracted features. For every model, report the metrics specified in Section 7.
+This section summarizes the ML methods you must apply to your SER features and how to evaluate them. The **weekly roadmap (Section 6)** specifies when to work on each method. For every model below, implement it in MiniLearn (from scratch) **and** apply the scikit-learn equivalent, then compare results.
 
-### 5.1 Classical Models (Required)
+### 5.1 Required Models
 
-| Model                       | Course Chapter | What to Explore                                                        |
-| --------------------------- | -------------- | ---------------------------------------------------------------------- |
-| Logistic Regression         | Ch. 7          | Use **both** your MiniLearn version and scikit-learn. Compare results. |
-| Gaussian Naive Bayes        | Ch. 7          | Good fast baseline.                                                    |
-| k-Nearest Neighbors         | Ch. 7          | Try different values of _k_. Why does standardization matter here?     |
-| Support Vector Machine      | Ch. 8          | Try linear, RBF, and polynomial kernels. Tune C and gamma.             |
-| Decision Tree               | Ch. 9          | Visualize the tree. Discuss overfitting and pruning.                   |
-| Random Forest               | Ch. 10         | Compare with single Decision Tree. Why is it better?                   |
-| Bagging / Voting Classifier | Ch. 10         | Combine your best models.                                              |
+**Supervised (Classification):**
 
-### 5.2 Boosting Models (Optional)
+- Logistic Regression, Gaussian Naive Bayes, k-Nearest Neighbors
+- Support Vector Machine (try multiple kernels)
+- Decision Tree (CART) and Random Forest
+- At least one neural network: Dense NN, 1D-CNN, or LSTM (may use TensorFlow/Keras or PyTorch)
 
-| Model             | What to Explore                                                        |
-| ----------------- | ---------------------------------------------------------------------- |
-| AdaBoost          | How does it focus on misclassified samples?                            |
-| Gradient Boosting | Compare with AdaBoost on the same features.                            |
-| XGBoost           | Often a top performer on tabular data. Compare with Gradient Boosting. |
+**Unsupervised (Clustering):**
 
-### 5.3 Neural Network Models (Required — At Least One)
+- K-Means (k = 8, matching the number of emotions). Evaluate with Adjusted Rand Index and Normalized Mutual Information. Visualize clusters in 2D (PCA or t-SNE) colored by cluster assignment vs. true emotion.
+- Optional: Hierarchical Clustering, DBSCAN, or GMMs.
 
-| Model                      | Input Type                         | Notes                                                      |
-| -------------------------- | ---------------------------------- | ---------------------------------------------------------- |
-| Dense Neural Network (DNN) | Feature vector                     | A few Dense layers with ReLU + softmax output. Start here. |
-| 1D-CNN                     | Raw MFCC frames or Mel spectrogram | Captures local temporal patterns in audio.                 |
-| LSTM / GRU                 | MFCC frame sequences               | Captures sequential dependencies in speech over time.      |
+### 5.2 Required Metrics
 
-You can use `tensorflow`/`keras` or `pytorch` as well (since you're using a pre-trained model it would be a simple adaptation).
+For every supervised model, report: **Accuracy**, **Precision**, **Recall**, **F1 Score** (per-class and macro/weighted), **Confusion Matrix** (heatmap), and **ROC/AUC** (One-vs-Rest).
 
----
+### 5.3 Validation Strategy
 
-## 6. Unsupervised Learning — Clustering
-
-Apply clustering to explore whether emotional categories emerge naturally from the features **without** using the labels.
-
-### Requirements
-
-1. Apply **K-Means** (with k = 8, matching the number of emotions) to your feature vectors.
-2. (Optional) Apply **Agglomerative (Hierarchical) Clustering** and visualize the dendrogram.
-3. (Optional) Try DBSCAN or Gaussian Mixture Models.
-
-### Analysis Questions (Address in Your Report)
-
-- Do the clusters correspond to true emotion labels? Quantify using **Adjusted Rand Index** and **Normalized Mutual Information**.
-- Visualize clusters in 2D (using PCA or t-SNE), coloring points by (a) cluster assignment and (b) true emotion. Compare.
-- Which emotions are most often confused/clustered together? Does this make intuitive sense?
-- Is SER fundamentally better suited to supervised or unsupervised learning? Why?
-
----
-
-## 7. Model Evaluation & Comparison
-
-### 7.1 Required Metrics
-
-For **every** supervised model, compute and report:
-
-- **Accuracy**
-- **Precision** (per-class and macro/weighted average)
-- **Recall** (per-class and macro/weighted average)
-- **F1 Score** (per-class and macro/weighted average)
-- **Confusion Matrix** (visualize as a heatmap)
-- **ROC Curve & AUC** (One-vs-Rest for multiclass)
-
-### 7.2 Validation Strategy
-
-- Use **Stratified K-Fold Cross-Validation** (k = 5 or 10).
+- Use **Stratified K-Fold Cross-Validation** (k = 5 or 10) for classical models.
 - For neural networks, use a held-out validation split.
-- Perform **hyperparameter tuning** (GridSearch or RandomizedSearch) on the training folds. Report the best parameters.
-- Never evaluate on data the model has seen during training or tuning.
+- Perform hyperparameter tuning (GridSearch or RandomizedSearch) on training folds only.
 
-### 7.3 Comparative Analysis
+### 5.4 Comparative Analysis
 
-Build a summary comparison table of all models (accuracy, macro-F1, AUC, best hyperparameters, training time) and discuss:
-
-- Which model performed best and why?
-- Did advanced models significantly outperform simple baselines?
-- Which emotions are hardest to classify?
-- Did your MiniLearn results match scikit-learn?
-- How did different feature sets affect performance?
+Build a summary table of all models (accuracy, macro-F1, AUC, best hyperparameters, training time). In your report, discuss which model performed best and why, which emotions are hardest to classify, how MiniLearn compares to scikit-learn, and how different feature sets affect performance.
 
 ---
 
-## 8. Weekly Roadmap
+## 6. Weekly Roadmap
 
 | Week      | Topic                                        | Project Tasks                                                                                                                                                                                                                                        | Deliverable                                                                  |
 | --------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
@@ -247,7 +194,7 @@ Build a summary comparison table of all models (accuracy, macro-F1, AUC, best hy
 
 ---
 
-## 9. Setup
+## 7. Setup
 
 ### Required Python Packages
 
@@ -261,7 +208,7 @@ Go to [https://zenodo.org/records/1188976](https://zenodo.org/records/1188976) a
 
 ---
 
-## 10. Report Requirements
+## 8. Report Requirements
 
 Your final submission should be a well-organized Jupyter notebook (or set of notebooks) that reads like a technical report:
 
@@ -279,7 +226,7 @@ Your final submission should be a well-organized Jupyter notebook (or set of not
 
 ---
 
-## 11. Rubric
+## 9. Rubric
 
 ### Total: 100 points
 
@@ -299,7 +246,7 @@ You must be able to explain every piece of code you submit. I reserve the right 
 
 ---
 
-## 12. Academic Integrity
+## 10. Academic Integrity
 
 You may use AI tools for guidance, debugging, and learning concepts. However:
 
