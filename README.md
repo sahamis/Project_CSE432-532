@@ -235,14 +235,14 @@ Build a summary comparison table of all models (accuracy, macro-F1, AUC, best hy
 | Week | Course Topic | Project Milestone | Deliverable |
 |------|-------------|-------------------|-------------|
 | **4** | Introduction to ML | Setup & Exploration: Download audio data, set up environment, parse filenames, build metadata table. | Notebook: data loading + class distribution plot |
-| **4-5** | Data Wrangling | Data Cleaning: Verify file counts, check for corruption, organize by actor/emotion. | Notebook: data audit report |
-| **4-5** | Data Exploration | Feature Extraction (Part 1): Extract MFCCs, ZCR, RMS, spectral features. Save to CSV. | Feature CSV + EDA notebook |
-| **4-5** | Data Exploration (cont.) | Feature Extraction (Part 2) & EDA: Additional features, correlation analysis, visualizations. | Expanded features + analysis notebook |
-| **6** | Regression / Classification | MiniLearn — Logistic Regression & Metrics: First from-scratch classifier + metric functions. | MiniLearn (partial) + initial results |
+| **5** | Data Wrangling | Data Cleaning: Verify file counts, check for corruption, organize by actor/emotion. | Notebook: data audit report |
+| **5** | Data Exploration | Feature Extraction (Part 1): Extract MFCCs, ZCR, RMS, spectral features. Save to CSV. | Feature CSV + EDA notebook |
+| **5** | Data Exploration (cont.) | Feature Extraction (Part 2) & EDA: Additional features, correlation analysis, visualizations. | Expanded features + analysis notebook |
+| **6** | Classification Models | MiniLearn — Here we mainly learn about regression, but it's a good idea to work on Logistic Regression from next chapter for classification. Compare with scikit-learn. | Updated MiniLearn + comparison notebook |
 | **7** | Classification Models | MiniLearn — KNN & Naive Bayes: Apply all three classifiers. Compare with scikit-learn. | Updated MiniLearn + comparison notebook |
 | **8** | SVMs | SVM Experiments: Linear, RBF, polynomial kernels. Hyperparameter tuning. | SVM results notebook |
 | **9** | Decision Trees | MiniLearn — Decision Tree: Implement CART. Visualize. Discuss overfitting. | Updated MiniLearn + tree notebook |
-| **10** | Ensemble Models | Ensembles: RF, AdaBoost, Gradient Boosting, XGBoost. | Ensemble results notebook |
+| **9** | Ensemble Models | Ensembles: RF, AdaBoost, Gradient Boosting, XGBoost. | Ensemble results notebook |
 | **11** | Model Evaluation | Comprehensive Evaluation: All metrics, ROC curves, comparison table. | Evaluation notebook |
 | **12** | Model Validation | Cross-Validation & Tuning: Stratified K-Fold, finalized hyperparameters. | Validation notebook |
 | **13** | Clustering | Unsupervised Analysis: K-Means, Hierarchical, PCA/t-SNE visualization. | Clustering notebook |
