@@ -74,21 +74,22 @@ You will develop **MiniLearn** — your own mini scikit-learn–style Python pac
 ### Requirements
 
 1. **Importable Python package.** You should be able to write statements like `from minilearn.classifiers import LogisticRegression` in your SER notebook.
-2. **[optional]** Follow the scikit-learn API pattern. Each model must have `.fit(X, y)`, `.predict(X)`, and `.score(X, y)` methods.
-3. **Required implementations** (from scratch, using only NumPy/SciPy for numerical operations):
-   - Logistic Regression (with gradient descent)
-   - k-Nearest Neighbors (KNN)
-   - Gaussian Naive Bayes
-   - Decision Tree (CART algorithm)
-   - Evaluation metrics: accuracy, precision, recall, F1 score, confusion matrix
-   - Preprocessing: feature standardization, train-test split
-   - PCA for dimensionality reduction
-   - SVM (simplified linear)
-   - ANN
-   - Cross-validation utility (k-fold)
-   - Clustering (see section 6)
-4. **Optional / Bonus:**
-   - Ensemble method (e.g., bagging or random forest wrapper)
+   1. **[optional]** Follow the scikit-learn API pattern. Each model must have `.fit(X, y)`, `.predict(X)`, and `.score(X, y)` methods.
+   2. **Required implementations** (from scratch, using only NumPy/SciPy for numerical operations):
+      - Preprocessing: feature standardization, train-test split
+      - Logistic Regression (with gradient descent)
+      - k-Nearest Neighbors (KNN)
+      - Gaussian Naive Bayes
+      - SVM (simplified linear)
+      - Decision Tree (CART algorithm)
+      - Evaluation metrics: accuracy, precision, recall, F1 score, confusion matrix
+      - Cross-validation utility (k-fold)
+      - Clustering (see section 6)
+      - PCA for dimensionality reduction
+      - ANN (your choice, a 1-layer perceptron based ANN for classification is the minimum requirement)
+   3. **Optional / Bonus:**
+      - You can implement other methods as well to improve your comparative analysis
+
 
 You must compare your MiniLearn implementations against the equivalent scikit-learn classes and **discuss** where they agree, where they diverge, and why.
 
