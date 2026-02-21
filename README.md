@@ -200,7 +200,7 @@ Build a summary table of all models (accuracy, macro-F1, AUC, best hyperparamete
 
 You will need: `numpy`, `pandas`, `matplotlib`, `seaborn`, `scikit-learn`, `librosa`, `soundfile`, `xgboost`,
 
-- Later you use a deep learning framework (`tensorflow` or `pytorch`).
+- I encourage you to use a deep learning framework (e.g., `tensorflow` or `pytorch`) for the ANN portion of the project. This will give you valuable exposure to deep learning concepts and tools that are widely used in both industry and academia. You can also use it for more advanced feature extraction (e.g., pre-trained audio embeddings) if you wish.
 
 ### Dataset Download
 
