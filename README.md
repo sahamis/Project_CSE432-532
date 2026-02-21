@@ -230,25 +230,20 @@ Build a summary comparison table of all models (accuracy, macro-F1, AUC, best hy
 
 ---
 
-## 8. Weekly Roadmap (WIP: This will be updated)
+## 8. Weekly Roadmap
 
-| Week | Course Topic | Project Milestone | Deliverable |
-|------|-------------|-------------------|-------------|
-| **4** | Introduction to ML | Setup & Exploration: Download audio data, set up environment, parse filenames, build metadata table. | Notebook: data loading + class distribution plot |
-| **5** | Data Wrangling | Data Cleaning: Verify file counts, check for corruption, organize by actor/emotion. | Notebook: data audit report |
-| **5** | Data Exploration | Feature Extraction (Part 1): Extract MFCCs, ZCR, RMS, spectral features. Save to CSV. | Feature CSV + EDA notebook |
-| **5** | Data Exploration (cont.) | Feature Extraction (Part 2) & EDA: Additional features, correlation analysis, visualizations. | Expanded features + analysis notebook |
-| **6** | Classification Models | MiniLearn — Here we mainly learn about regression, but it's a good idea to work on Logistic Regression from next chapter for classification. Compare with scikit-learn. | Updated MiniLearn + comparison notebook |
-| **7** | Classification Models | MiniLearn — KNN & Naive Bayes: Apply all three classifiers. Compare with scikit-learn. | Updated MiniLearn + comparison notebook |
-| **8** | SVMs | SVM Experiments: Linear, RBF, polynomial kernels. Hyperparameter tuning. | SVM results notebook |
-| **9** | Decision Trees | MiniLearn — Decision Tree: Implement CART. Visualize. Discuss overfitting. | Updated MiniLearn + tree notebook |
-| **9** | Ensemble Models | Ensembles: RF, AdaBoost, Gradient Boosting, XGBoost. | Ensemble results notebook |
-| **11** | Model Evaluation | Comprehensive Evaluation: All metrics, ROC curves, comparison table. | Evaluation notebook |
-| **12** | Model Validation | Cross-Validation & Tuning: Stratified K-Fold, finalized hyperparameters. | Validation notebook |
-| **13** | Clustering | Unsupervised Analysis: K-Means, Hierarchical, PCA/t-SNE visualization. | Clustering notebook |
-| **14** | Dimensionality Reduction | PCA & Feature Selection: Analyze explained variance, re-run classifiers. | Dimensionality reduction notebook |
-| **14** | Neural Networks | Deep Models: DNN, CNN, or LSTM. Experiment with architectures. | Deep learning notebook |
-| **15** | — | Final Report: Compile results, write discussion, clean repository. **Code walkthrough.** | Final report + clean repo |
+| Week | Topic | Project Tasks | Deliverable |
+|------|-------|---------------|-------------|
+| **4** | Data Wrangling & Feature Engineering | Download RAVDESS data, set up environment. Parse filenames and build metadata table. Explore class distributions and audio properties. | Data loading + EDA notebook |
+| **5** | Data Wrangling & Feature Engineering (cont.) | Extract audio features (MFCCs, ZCR, RMS, spectral features). Save to CSV. Correlation analysis, feature distributions by emotion, visualizations. Apply feature standardization. | Feature CSV + EDA notebook |
+| **6** | Regression | Finalize any remaining feature work. Apply a regression model (e.g., linear regression to predict emotional intensity from audio features). Evaluate with regression metrics (MSE, R²). Begin implementing Logistic Regression in MiniLearn. | Regression notebook + MiniLearn LR draft |
+| **7** | Classification | Apply Logistic Regression, Gaussian Naive Bayes, and kNN to SER. Compare MiniLearn vs scikit-learn. | Classification results notebook |
+| **8** | SVM | Apply SVM with linear, RBF, and polynomial kernels. Tune hyperparameters (C, gamma). Optionally try SVR. | SVM results notebook |
+| 9 | Decision Trees & Ensembles | Implement **only** CART from scratch in MiniLearn. Apply scikit-learn Decision Tree, Random Forest, and AdaBoost for empirical comparison. Visualize trees and discuss overfitting and generalization. | MiniLearn CART + ensemble analysis notebook |
+| **10** | Model Validation | Apply Stratified K-Fold cross-validation to all models. Hyperparameter tuning (GridSearch/RandomizedSearch). Build model comparison table. | Validation notebook |
+| **11** | Clustering | Apply K-Means (k = 8). Evaluate with ARI/NMI. Visualize clusters using PCA or t-SNE. Optional: hierarchical clustering, DBSCAN. | Clustering notebook |
+| **12** | Dimensionality Reduction | Apply PCA for feature extraction. Analyze explained variance. Re-run classifiers on reduced features. Optional: non-linear techniques. | Dimensionality reduction notebook |
+| **13–14** | ANN | Implement a simple ANN from scratch in MiniLearn. Apply one off-the-shelf DL model (e.g., Dense NN, 1D-CNN, or LSTM). Compare with classical models. Finalize report and clean repository. *Week 14 may be used for project evaluation/walkthrough.* | MiniLearn ANN + DL notebook + final report |
 
 ---
 
