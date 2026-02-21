@@ -129,17 +129,17 @@ mfcc_mean = np.mean(mfcc, axis=1)                       # shape: (13,) — one m
 mfcc_std = np.std(mfcc, axis=1)                         # shape: (13,)
 ```
 
-Apply this pattern to **all** the features listed above. Concatenate everything into one feature vector per file, then store all vectors in a DataFrame and **save to CSV** so you don't have to re-extract every time.
+Often using only one of this hand-crafted feature sets (e.g. MFCCs) is not enough to achive good performance. You may want to experiment with different combinations of features (e.g. MFCCs and dtheir deltas, chroma, ZCR, etc.) to see which combination works best for your classifiers. Combining multiple features is as simple as concatenating them together into one long feature vector per audio file.
 
 ### 4.2 Pre-Trained Embeddings (To boost the accuracy)
 
-For more advanced experiments, you can extract embeddings from pre-trained audio neural networks (e.g., OpenL3, VGGish, wav2vec 2.0, or HuBERT via HuggingFace). These produce high-dimensional vectors that encode rich acoustic information. Compare the results with your hand-crafted features.
+For more advanced experiments, you may extract embeddings from pre-trained audio neural networks (e.g., OpenL3, VGGish, wav2vec 2.0, or HuBERT via HuggingFace, etc.). These produce high-dimensional vectors that encode rich acoustic information. Compare the results with your hand-crafted features.
 
 ### 4.3 Feature Standardization
 
-**Standardize your features before classification.** Audio features live on very different scales (e.g., MFCCs vs. spectral centroid in Hz vs. RMS energy). Apply standardization so that each feature has zero mean and unit variance.
+**Standardize your features before classification.** Audio features live on very different scales (e.g., MFCCs vs. spectral centroid in Hz vs. RMS energy). Apply proper standardization as we covered in class (e.g., z-score normalization) as appropriate for your features. One particular quality of your analysis will be to how you handle such step in your pipeline.
 
-Key rule: **fit the scaler on training data only**, then use the same fitted scaler to transform both training and test data. Never fit on test data. This is an important concept and violation of it in your results will result in major deduction in your score.
+**NOTE**: Be careful about data leakage when standardizing. You should always **fit the scaler on training data only**, then use the same fitted scaler to transform both training and test data. Never fit on test data. This is an important concept and violation of it in your results will result in major deduction in your score.
 
 ---
 
