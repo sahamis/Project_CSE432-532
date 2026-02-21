@@ -1,5 +1,19 @@
 # Setting Up Your Virtual Environment
 
+## What is a virtual environment and why do we use it?
+
+A virtual environment is an **isolated Python installation** inside your project folder (typically `.venv/`). It has its own copy of `python`, `pip`, and every package you install.
+
+Why this matters:
+
+- **No conflicts.** Different projects can depend on different (even incompatible) versions of the same library. A virtual environment keeps each project's dependencies separate.
+- **Reproducibility.** Everyone working on the project installs exactly the packages listed in `requirements.txt` — nothing more, nothing less.
+- **Clean system.** Your OS-level Python stays untouched. If something breaks, just delete `.venv` and recreate it.
+
+In short: **always work inside a virtual environment** for this course.
+
+---
+
 You may use any workflow you prefer:
 
 1. **Terminal (recommended first choice)**
@@ -52,18 +66,20 @@ If `jupyter lab` is not found, install it in the active environment:
 pip install jupyterlab
 ```
 
-To deactivate your virtula environment (.venv) later:
+To deactivate your virtual environment (.venv) later:
 
 ```bash
 # Just use this command:
 deactivate
 ```
 
-When `.venv` is activated, your shell automatically shows it, however to definite check is:
+When `.venv` is activated, your shell automatically shows it, however the definitive check is:
+
 ```shell
 which -a python
 which -a jupyter
 ```
+
 and you should see the PATH for current `.venv`. For windows users you may use `where` instead of `which`.
 
 ---
@@ -94,7 +110,7 @@ You **must** install VS Code using the **System Installer** (not the User Instal
 
 When you open a `.ipynb` notebook, VS Code should prompt you to select a kernel. Choose the kernel associated with your `.venv` environment (it should be listed as something like `Python 3 ('.venv': venv)`).
 
-You can run Jupyter lab directly from VS Code terminal as well (see Option 1). However, if you have Jupyter extension installed, you can directly open notebooks and select the `.venv` kernel without needing to launch Jupyter Lab separately. Just make sure to select the correct interpreter (the one from `.venv`) in VS Code when you open a notebook. As a VS Code user, I assume you are familiar with how to select the Python interpreter and Jupyter kernel in VS Code, but if not, you can find those options in the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`) under **Python: Select Interpreter** and **Jupyter: Select Kernel** or for creating environment: **Python: Create environment**.
+You can run Jupyter lab directly from VS Code terminal as well (see Section 1). However, if you have Jupyter extension installed, you can directly open notebooks and select the `.venv` kernel without needing to launch Jupyter Lab separately. Just make sure to select the correct interpreter (the one from `.venv`) in VS Code when you open a notebook. As a VS Code user, I assume you are familiar with how to select the Python interpreter and Jupyter kernel in VS Code, but if not, you can find those options in the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`) under **Python: Select Interpreter** and **Jupyter: Select Kernel** or for creating environment: **Python: Create environment**.
 
 ---
 
@@ -137,6 +153,54 @@ DATA_DIR = "/content/drive/MyDrive/SER_Project/data"
 
 ---
 
+## Troubleshooting: Notebook does not detect `.venv` kernel
+
+Before troubleshooting, I have found many cases that resolve easily if you explictly run jupyter lab from .venv terminal (Install ipykernel if it's not installed). To do this:
+
+1. Make sure `.venv` is activated in your terminal.
+2. `.venv/bin/jupyter lab` (or `.\venv\Scripts\jupyter lab` on Windows).
+3. Open the notebook from the Jupyter Lab interface and select the kernel associated with `.venv`.
+   If this does not work, then step below helps to register the kernel explicitly.
+
+If you open a `.ipynb` notebook in **Jupyter Lab** or **VS Code** and your `.venv` environment is not listed as a kernel, follow these steps:
+
+### 1. Install `ipykernel` inside `.venv`
+
+Make sure your virtual environment is activated, then run:
+
+```bash
+pip install ipykernel
+```
+
+### 2. Register the kernel explicitly
+
+```bash
+python -m ipykernel install --user --name=ser_project --display-name "Python (SER Project)"
+jupyter kernelspec list
+```
+
+This registers your `.venv` Python as a Jupyter kernel that both Jupyter Lab and VS Code can discover.
+
+### 3. Refresh / restart
+
+- **Jupyter Lab:** Refresh the browser page, then open your notebook and select **Kernel → Change Kernel → Python (.venv)**.
+- **VS Code:** Reload the window (`Cmd+Shift+P` / `Ctrl+Shift+P` → **Developer: Reload Window**), open your notebook, click the kernel picker in the top-right corner, and select **Python (.venv)** (or the `.venv` interpreter).
+
+### 4. Verify
+
+Run this in a notebook cell to confirm the kernel is using the correct Python:
+
+```python
+import sys
+print(sys.executable)
+```
+
+The output should point to a path inside your `.venv` directory (e.g., `.venv/bin/python`).
+
+> **Tip:** If you ever delete and recreate `.venv`, you will need to repeat steps 1–2 because the old kernel registration points to a path that no longer exists.
+
+---
+
 ## Windows Users (Read This First)
 
 I do **not** directly support native Windows development environments in this course.
@@ -160,6 +224,7 @@ You are now in a full Linux shell. Follow Section 1 (Terminal Workflow) exactly 
 If you use VS Code, open the project folder **from within WSL** so that `.venv` and kernels are detected correctly (e.g., run `code .` from the Ubuntu terminal inside the project directory).
 
 - NOTE: You may need to search on how to integrate WSL with VS Code if you have not used it before, but it is straightforward and well-documented by Microsoft.
+- **Performance tip:** For best performance, keep your project files inside the Linux filesystem (e.g., `~/projects/SER_Project/`) rather than under `/mnt/c/...`. Accessing Windows drives from WSL is noticeably slower.
 
 ---
 
@@ -192,7 +257,12 @@ PowerShell may block activation scripts by default. Allow them with:
 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ```
 
-> **Important Note (Path and python toolchain issues):** Windows hides PATH configuration in various places (System Environment Variables, User Environment Variables, Windows Store Python aliases, etc.). If commands like `python`, `pip`, `urllib`, or other parts of the Python toolchain are not found — or if VS Code / the terminal does not reliably detect them
+> **Important Note (PATH and Python toolchain issues):** Windows hides PATH configuration in various places (System Environment Variables, User Environment Variables, Windows Store Python aliases, etc.). If commands like `python`, `pip`, `urllib`, or other parts of the Python toolchain are not found — or if VS Code / the terminal does not reliably detect them — **it is your responsibility to locate and fix the PATH entries on your system.** Common things to check:
+>
+> - Make sure the **Windows Store Python app alias** is disabled (Settings → Apps → App execution aliases → turn off the `python.exe` / `python3.exe` entries).
+> - Verify that your Python installation directory (e.g., `C:\Users\<you>\AppData\Local\Programs\Python\Python3xx\` and its `Scripts\` subfolder) appears in your **User** or **System** `PATH`.
+> - After editing PATH, **restart** your terminal and VS Code for changes to take effect.
+> - VS Code and terminal shells sometimes cache old PATH values; restarting the application fully (not just the terminal tab) can resolve detection issues with `pip`, `python`, `urlopen`, etc.
 
 #### Run Jupyter lab or run python script:
 
