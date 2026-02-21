@@ -208,21 +208,21 @@ Go to [https://zenodo.org/records/1188976](https://zenodo.org/records/1188976) a
 
 ---
 
-## 8. Report Requirements
+## 8. Final Submission
 
-Your final submission should be a well-organized Jupyter notebook (or set of notebooks) that reads like a technical report:
+Your final deliverable is a **compiled version of your weekly notebooks** organized into a coherent, report-style document. You do not need to write a separate report — instead, combine and clean up the notebooks you have been building throughout the semester.
 
-1. **Introduction** — What is SER? Why is it important? Describe the RAVDESS dataset.
-2. **Data Exploration** — Class distributions, audio visualizations, summary statistics.
-3. **Feature Engineering** — What features you extracted, why, and how they distribute across emotions.
-4. **MiniLearn Library** — Description of your implementations and comparison with scikit-learn.
-5. **Classification Results** — All models, all metrics, confusion matrices, ROC curves.
-6. **Clustering Analysis** — Unsupervised results and comparison with true labels.
-7. **Discussion** — Key findings, surprises, limitations, what you'd do differently.
-8. **Conclusion** — Summary of best methods and practical takeaways.
-9. **References** — Cite the RAVDESS paper, libraries, and any resources consulted.
+Your compiled submission should include:
 
-> **Discuss, don't just display.** For every plot and table, write a paragraph explaining what it shows and what it means.
+1. **Introduction** — Brief overview of SER and the RAVDESS dataset.
+2. **Your weekly notebooks** — Data exploration, feature engineering, each ML method, clustering, dimensionality reduction, and ANN — organized in logical order with transitions between sections.
+3. **Discussion** — Key findings, model comparison highlights, limitations, and what you would do differently.
+4. **Conclusion** — Summary of best-performing methods and practical takeaways.
+5. **References** — Cite the RAVDESS paper, libraries, and any resources you used.
+
+For every plot and table, include a brief explanation of what it shows and what it means.
+
+> **AI tools are permitted** for writing, editing, and polishing the final report text. However, you must understand and be able to discuss every result and figure during the code walkthrough.
 
 ---
 
@@ -248,7 +248,7 @@ You must be able to explain every piece of code you submit. I reserve the right 
 
 ## 10. Academic Integrity
 
-You may use AI tools for guidance, debugging, and learning concepts. However:
+You may use AI tools for guidance, debugging, learning concepts, and writing/polishing your report. However:
 
 - You must **understand and be able to explain** every line of code and every result.
 - Your Git history should show **incremental development**, not a single bulk commit.
